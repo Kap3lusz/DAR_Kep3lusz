@@ -5,6 +5,9 @@ format: html
 toc: TRUE
 editor: visual
 ---
+## Notes
+
+Available [here](https://github.com/blakocha/DAR2026)
 
 ## Statistical inference (chapter)
 
