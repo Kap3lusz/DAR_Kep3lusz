@@ -92,6 +92,34 @@ test_result<-t.test(time_total[data$kierunek=="zPG"], conf.level = 0.99)
 print(test_result$conf.int)
 ```
 
+**Example 4**
+
+Confidence intervals for the guess of the share of African countries in the UN with low and high "Anchor". 
+
+(https://docs.google.com/spreadsheets/d/1nVKM8U8jB3T3zUHD0wix2cm4v4ygHfjRw9lrPZJED0o/edit?usp=sharing)
+
+```{r}
+ID = "1nVKM8U8jB3T3zUHD0wix2cm4v4ygHfjRw9lrPZJED0o"
+sheet = "white" 
+library(googlesheets4)
+gs4_deauth()
+data <- read_sheet(ID, sheet)
+```
+
+```{r}
+boxplot(data$Africa_Estimate~data$Africa_Anchor_High, horizontal = TRUE)
+```
+
+```{r}
+anchor_low <- data$Africa_Estimate[data$Africa_Anchor_High==0]
+
+anchor_high <- data$Africa_Estimate[data$Africa_Anchor_High==1]
+print("The CI for the mean when the anchor is low")
+t.test(anchor_low)$conf.int
+print("The CI for the mean when the anchor is high")
+t.test(anchor_high)$conf.int
+
+```
 
 ### Hypothesis testing
 
