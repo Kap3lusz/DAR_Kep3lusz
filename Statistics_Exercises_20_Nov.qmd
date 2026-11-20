@@ -1,5 +1,5 @@
 ---
-title: "Statistics Exercises"
+title: "Statistics Exercises in Quarto"
 author: "Kapelusz"
 format: html
 toc: TRUE
@@ -21,7 +21,7 @@ A __confidence interval__ is a range of values used to estimate an unknown popul
 
 The confidence level is typically expressed as a percentage. Typical confidence levels: 90%, 95%, 99%. 
 
-Examples:
+**Example 1:**
 
 1. A producer of a medicinal skin cream is interested in the proportion of people of a certain age for whom the cream will improve their skin condition. In a random sample of 68 people, a positive effect was observed in 42 cases. What proportion of people can be expected to see an improvement with this cream, with 99% confidence, in the population?
 
@@ -33,7 +33,7 @@ binom::binom.confint(42, 68,
 
 ```
 
-Example 2:
+**Example 2:**
 
 Randomly select 100 locations on Earth, checking whether you land on water or land. Based on this, estimate the proportion of land on Earth's surface. Assume a 90% confidence interval.
 
@@ -46,6 +46,47 @@ binom::binom.confint(34, 100,
                      conf.level = 0.9, 
                      method = "asymptotic")
 
+```
+
+**Example 3:**
+
+Determine the 99-percent confidence intervals for the average travel time of dr. B by bicycle on the route between the university and home based on sample data:
+
+* for any trip,
+* for the trip to the university,
+* for the return trip from the university.
+
+Data can be found [here](https://docs.google.com/spreadsheets/d/1MvyoGcPtW3hUa4iARd2RLM6ahfMBFBYqfzet3K9_6do/edit?gid=1150951672#gid=1150951672).
+
+```{r}
+URL = "https://docs.google.com/spreadsheets/d/1MvyoGcPtW3hUa4iARd2RLM6ahfMBFBYqfzet3K9_6do/edit?gid=1150951672#gid=1150951672"
+library(googlesheets4)
+gs4_deauth()
+data <- read_sheet(URL)
+time_total <- as.numeric(data$czas)
+hist(time_total)
+```
+
+* for any trip,
+```{r}
+round(mean(time_total),2)
+round(sd(time_total),2)
+round(length(time_total),2)
+
+test_result<-t.test(time_total, conf.level = 0.99)
+print(test_result$conf.int)
+```
+
+* for the trip to the university,
+```{r}
+test_result<-t.test(time_total[data$kierunek=="naPG"], conf.level = 0.99)
+print(test_result$conf.int)
+```
+
+* for the return trip from the university.
+```{r}
+test_result<-t.test(time_total[data$kierunek=="zPG"], conf.level = 0.99)
+print(test_result$conf.int)
 ```
 
 

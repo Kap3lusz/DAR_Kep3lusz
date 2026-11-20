@@ -8,7 +8,7 @@
 
 <meta name="author" content="Kapelusz">
 
-<title>Statistics Exercises</title>
+<title>Statistics Exercises in Quarto</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -131,7 +131,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Statistics Exercises</h1>
+<h1 class="title">Statistics Exercises in Quarto</h1>
 </div>
 
 
@@ -166,7 +166,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="confidence-interval-sub-chapter">Confidence interval (sub-chapter)</h3>
 <p>A <strong>confidence interval</strong> is a range of values used to estimate an unknown population parameter. It is constructed in such a way that, under appropriate conditions, there is a specified probability – called the <strong>confidence level</strong> – that the interval calculated based on a random sample will contain the true parameter value.</p>
 <p>The confidence level is typically expressed as a percentage. Typical confidence levels: 90%, 95%, 99%.</p>
-<p>Examples:</p>
+<p><strong>Example 1:</strong></p>
 <ol type="1">
 <li>A producer of a medicinal skin cream is interested in the proportion of people of a certain age for whom the cream will improve their skin condition. In a random sample of 68 people, a positive effect was observed in 42 cases. What proportion of people can be expected to see an improvement with this cream, with 99% confidence, in the population?</li>
 </ol>
@@ -180,7 +180,7 @@ window.Quarto = {
 1 asymptotic 42 68 0.6176471 0.4658494 0.7694447</code></pre>
 </div>
 </div>
-<p>Example 2:</p>
+<p><strong>Example 2:</strong></p>
 <p>Randomly select 100 locations on Earth, checking whether you land on water or land. Based on this, estimate the proportion of land on Earth’s surface. Assume a 90% confidence interval.</p>
 <p><a href="https://bankonomia.nazwa.pl/globe/">Sampling tool</a></p>
 <p>Input your results <a href="https://docs.google.com/spreadsheets/d/1TCaPAH1D51l5j0A4WauehP22m8zyww7n8eLQcjGBpEw/edit?usp=sharing">here</a>.</p>
@@ -191,6 +191,87 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>      method  x   n mean     lower     upper
 1 asymptotic 34 100 0.34 0.2620818 0.4179182</code></pre>
+</div>
+</div>
+<p><strong>Example 3:</strong></p>
+<p>Determine the 99-percent confidence intervals for the average travel time of dr. B by bicycle on the route between the university and home based on sample data:</p>
+<ul>
+<li>for any trip,</li>
+<li>for the trip to the university,</li>
+<li>for the return trip from the university.</li>
+</ul>
+<p>Data can be found <a href="https://docs.google.com/spreadsheets/d/1MvyoGcPtW3hUa4iARd2RLM6ahfMBFBYqfzet3K9_6do/edit?gid=1150951672#gid=1150951672">here</a>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>URL <span class="ot">=</span> <span class="st">"https://docs.google.com/spreadsheets/d/1MvyoGcPtW3hUa4iARd2RLM6ahfMBFBYqfzet3K9_6do/edit?gid=1150951672#gid=1150951672"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googlesheets4)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gs4_deauth</span>()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sheet</span>(URL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ Reading from "rowery".</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ Range 'rowery'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+• `` -&gt; `...1`</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>time_total <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data<span class="sc">$</span>czas)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(time_total)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Statistics_Exercises_20_Nov_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>for any trip,</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>(time_total),<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 58.93</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sd</span>(time_total),<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.89</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">length</span>(time_total),<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 93</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>test_result<span class="ot">&lt;-</span><span class="fu">t.test</span>(time_total, <span class="at">conf.level =</span> <span class="fl">0.99</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test_result<span class="sc">$</span>conf.int)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 57.32264 60.53542
+attr(,"conf.level")
+[1] 0.99</code></pre>
+</div>
+</div>
+<ul>
+<li>for the trip to the university,</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>test_result<span class="ot">&lt;-</span><span class="fu">t.test</span>(time_total[data<span class="sc">$</span>kierunek<span class="sc">==</span><span class="st">"naPG"</span>], <span class="at">conf.level =</span> <span class="fl">0.99</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test_result<span class="sc">$</span>conf.int)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 53.65678 56.86091
+attr(,"conf.level")
+[1] 0.99</code></pre>
+</div>
+</div>
+<ul>
+<li>for the return trip from the university.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>test_result<span class="ot">&lt;-</span><span class="fu">t.test</span>(time_total[data<span class="sc">$</span>kierunek<span class="sc">==</span><span class="st">"zPG"</span>], <span class="at">conf.level =</span> <span class="fl">0.99</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test_result<span class="sc">$</span>conf.int)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 61.09951 64.93307
+attr(,"conf.level")
+[1] 0.99</code></pre>
 </div>
 </div>
 </section>
@@ -205,7 +286,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Statistics_Exercises_20_Nov_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Statistics_Exercises_20_Nov_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Histogram of qsec</figcaption>
 </figure>
 </div>
