@@ -2,26 +2,20 @@
 title: "Statistics Exercises"
 author: "Kapelusz"
 format: html
+toc: TRUE
 editor: visual
 ---
 
-## Quarto
+## Statistical inference (chapter)
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+There are two main two **main topics** in *statistical interference*:
 
-## Running Code
+* Confidence interval
+* Hypothesis testing
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+You can read about them [in the script by Dr Kochański](https://blazejkochanski-statystyka2.share.connect.posit.cloud/). 
 
-```{r}
-1 + 1
-```
+### Confidence interval (sub-chapter)
 
-You can add options to executable code like this
+Examples:
 
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
