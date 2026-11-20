@@ -42,6 +42,35 @@ ul.task-list li input[type="checkbox"] {
 <link href="Statistics_Exercises_20_Nov_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="Statistics_Exercises_20_Nov_files/libs/bootstrap/bootstrap-215b371544c282197b31c8aa00ce3677.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -56,6 +85,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#statistical-inference-chapter" id="toc-statistical-inference-chapter" class="nav-link active" data-scroll-target="#statistical-inference-chapter">Statistical inference (chapter)</a>
   <ul class="collapse">
   <li><a href="#confidence-interval-sub-chapter" id="toc-confidence-interval-sub-chapter" class="nav-link" data-scroll-target="#confidence-interval-sub-chapter">Confidence interval (sub-chapter)</a></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis testing</a></li>
+  <li><a href="#plot-test" id="toc-plot-test" class="nav-link" data-scroll-target="#plot-test">Plot test</a></li>
+  <li><a href="#latex-formatting" id="toc-latex-formatting" class="nav-link" data-scroll-target="#latex-formatting">LaTeX formatting</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -89,15 +121,37 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="statistical-inference-chapter" class="level2">
 <h2 class="anchored" data-anchor-id="statistical-inference-chapter">Statistical inference (chapter)</h2>
-<p>There are two main two <strong>main topics</strong> in <em>statistical interference</em>:</p>
+<p>There are two main two <strong>main topics</strong> in <em>statistical inference</em>:</p>
 <ul>
 <li>Confidence interval</li>
 <li>Hypothesis testing</li>
 </ul>
-<p>You can read about them <a href="https://blazejkochanski-statystyka2.share.connect.posit.cloud/">in the script by Dr B</a>.</p>
+<p>You can read about them <a href="https://blazejkochanski-statystyka2.share.connect.posit.cloud/">in the script by Dr Kochański</a>.</p>
 <section id="confidence-interval-sub-chapter" class="level3">
 <h3 class="anchored" data-anchor-id="confidence-interval-sub-chapter">Confidence interval (sub-chapter)</h3>
 <p>Examples:</p>
+</section>
+<section id="hypothesis-testing" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-testing">Hypothesis testing</h3>
+<p>Examples:</p>
+<p><span class="math display">\[ H_0: p = 0.5 \]</span></p>
+</section>
+<section id="plot-test" class="level3">
+<h3 class="anchored" data-anchor-id="plot-test">Plot test</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Statistics_Exercises_20_Nov_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Histogram of qsec</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="latex-formatting" class="level3">
+<h3 class="anchored" data-anchor-id="latex-formatting">LaTeX formatting</h3>
+<p><span class="math display">\[ \sigma_X = \sqrt{\frac{\sum_{i=1}^n (x-\mu)^2}{n}}\]</span></p>
 </section>
 </section>
 

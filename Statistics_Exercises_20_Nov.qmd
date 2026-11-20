@@ -8,7 +8,7 @@ editor: visual
 
 ## Statistical inference (chapter)
 
-There are two main two **main topics** in *statistical interference*:
+There are two main two **main topics** in *statistical inference*:
 
 * Confidence interval
 * Hypothesis testing
@@ -19,3 +19,22 @@ You can read about them [in the script by Dr Kochański](https://blazejkochanski
 
 Examples:
 
+### Hypothesis testing
+
+Examples:
+
+$$ H_0: p = 0.5 $$
+
+### Plot test
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-cap: Histogram of qsec
+library(ggplot2)
+ggplot(mtcars, aes(x=qsec))+geom_histogram()
+```
+
+### LaTeX formatting
+
+$$ \sigma_X = \sqrt{\frac{\sum_{i=1}^n (x-\mu)^2}{n}}$$
